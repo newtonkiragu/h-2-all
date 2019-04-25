@@ -106,6 +106,7 @@ venv.bak/
 
 #envfiles
 *.env
+virtual
 
 # docker volumes
 volumes
