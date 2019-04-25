@@ -1,0 +1,8 @@
+{% extends 'forms/base.html' %}
+{% block content %}
+<form class="" action="/price" method="post">
+  {%csrf_token%}
+    <input type="text" name="" value="">
+    <button type="submit" name="button">submit</button>
+</form>
+{% endblock %}

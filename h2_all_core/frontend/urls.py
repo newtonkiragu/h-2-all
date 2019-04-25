@@ -1,2 +1,8 @@
 from django.urls import path, include
-import views
+from . import views
+
+
+urlpatterns = [
+    path("", views.home),
+    path("price", views.create_fie),
+]
