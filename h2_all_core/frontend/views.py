@@ -8,6 +8,8 @@ def home(request):
     # NewProfileForm=form
     return render(request, 'index.html', locals())
 
+def borehole(request):
+    return render(request, 'borehole.html', locals())
 
 def create_fie(request):
     current_price = 0
