@@ -1,8 +1,11 @@
 from handlers import SIM800L
-from handlers import SimpleDataHandler
-
+from handlers import SimpleDataHandler,Valve,Waterflow
+from handlers.utils import get_amount_and_name
+from handlers import settings
 
 data_handler=SimpleDataHandler()
+valve=Valve()
+waterflow=Waterflow()
 
 class SimpleManager:
 
@@ -21,6 +24,20 @@ class SimpleManager:
             sender,message=sms[0],sms[3]
             if message.startswith("edit-price"):
                 data_handler.edit_price(message)
+                return 
+            #to check if sender is safaricom in production
+            d=get_amount_and_name(message)
+            print(d, message)
+            if d is not None:
+                self.sim.send_sms(settings.SERVER_PHONE_NUMBER,message)
+                litres=float(d["amount"].replace(',', ''))/data_handler.read_price()
+                print(litres)
+                valve.on()
+                while waterflow.water_flow < litres:
+                    print(waterflow.water_flow)
+                valve.off()
+                waterflow.count=0
+            else: print(d)
 
 if __name__=="__main__":
     sim=SIM800L()

@@ -1,7 +1,6 @@
 import serial
-import RPi.GPIO as GPIO
 import os, time
-GPIO.setmode(GPIO.BOARD)
+from handlers import GPIO
 port = serial.Serial("/dev/serial0", baudrate=9600, timeout=1)
 
 def convert_to_string(buf):
