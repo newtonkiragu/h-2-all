@@ -2,3 +2,17 @@ Django==2.2
 pytz==2019.1
 psycopg2==2.8.2
 sqlparse==0.3.0
+africastalking==1.1.5
+certifi==2019.3.9
+chardet==3.0.4
+contextlib2==0.5.5
+djangorestframework==3.9.2
+djangorestframework-stubs==0.4.2
+idna==2.8
+python-dateutil==2.8.0
+python-decouple==3.1
+pytz==2019.1
+requests==2.21.0
+schema==0.7.0
+six==1.12.0
+urllib3==1.24.2
