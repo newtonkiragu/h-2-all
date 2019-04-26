@@ -1,21 +1,23 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% if title %}
-    <title>{{title}}</title>
-    {% endif %}
-    {% block styles %}
-      <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    {% endblock %}
 
-  </head>
-  <body>
-    {% block content %} {% endblock %}
-    {% block scripts %}
-    {% endblock %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-  </body>
+</head>
+
+<body>
+  {% block content %} {% endblock %}
+  {% block scripts %}
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery.ui.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  {% endblock %}
+
+</body>
+
 </html>

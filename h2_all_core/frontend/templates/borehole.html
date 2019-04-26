@@ -9,7 +9,7 @@
     <meta name="author" content="Isna Nur Azis">
     <meta name="keyword" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Miminium</title>
+    <title>H2 All</title>
 
     <!-- start: Css -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
@@ -416,8 +416,8 @@
 
                 function lineChart() {
                     var dataLine = [
-                        { label: '&nbsp Trafic', color: '#58B2F4', data: [[1, 25], [2, 22], [3, 25], [4, 30], [5, 20]] },
-                        { label: '&nbsp User', color: '#8C54CA', data: [[1, 10], [2, 14], [3, 20], [4, 25], [5, 40]] }
+                        { label: '&nbsp Transactions', color: '#58B2F4', data: [[10.30, 25], [11.00, 22], [11.30, 25], [12.00, 30], [12.30, 20]] },
+                        // { label: '&nbsp User', color: '#8C54CA', data: [[1, 10], [2, 14], [3, 20], [4, 25], [5, 40]] }
                     ];
 
                     var optionsLine = {
@@ -436,56 +436,56 @@
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay'
                     },
-                    defaultDate: '2015-02-12',
+                    defaultDate: '2019-04-12',
                     businessHours: true, // display business hours
                     editable: true,
                     events: [
                         {
-                            title: 'Business Lunch',
-                            start: '2015-02-03T13:00:00',
+                            title: 'Transactions',
+                            start: '2019-04-26',
                             constraint: 'businessHours'
                         },
                         {
-                            title: 'Meeting',
-                            start: '2015-02-13T11:00:00',
+                            title: 'Transactions',
+                            start: '2019-04-13',
                             constraint: 'availableForMeeting', // defined below
                             color: '#20C572'
                         },
                         {
-                            title: 'Conference',
-                            start: '2015-02-18',
-                            end: '2015-02-20'
+                            title: 'Transactions',
+                            start: '2019-04-24',
+                            end: '2019-04-24'
                         },
                         {
-                            title: 'Party',
-                            start: '2015-02-29T20:00:00'
+                            title: 'Transactions',
+                            start: '2019-04-25'
                         },
 
                         // areas where "Meeting" must be dropped
                         {
-                            id: 'availableForMeeting',
-                            start: '2015-02-11T10:00:00',
-                            end: '2015-02-11T16:00:00',
+                            id: 'Transactions',
+                            start: '2019-04-11',
+                            end: '2019-04-11T16:00:00',
                             rendering: 'background'
                         },
                         {
                             id: 'availableForMeeting',
-                            start: '2015-02-13T10:00:00',
-                            end: '2015-02-13T16:00:00',
+                            start: '2019-04-13',
+                            end: '2019-04-13T16:00:00',
                             rendering: 'background'
                         },
 
                         // red areas where no events can be dropped
                         {
-                            start: '2015-02-24',
-                            end: '2015-02-28',
+                            start: '2019-04-24',
+                            end: '2019-04-28',
                             overlap: false,
                             rendering: 'background',
                             color: '#FF6656'
                         },
                         {
-                            start: '2015-02-06',
-                            end: '2015-02-08',
+                            start: '2019-04-06',
+                            end: '2019-04-08',
                             overlap: true,
                             rendering: 'background',
                             color: '#FF6656'
