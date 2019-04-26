@@ -116,3 +116,6 @@ volumes
 
 #avoid migrations for now
 migrations/
+
+# editor files
+.idea/
