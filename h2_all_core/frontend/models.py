@@ -7,10 +7,10 @@ class Price(models.Model):
     name = models.CharField(max_length=256)
 
 class Borehole(models.Model):
-    id = models.IntegerField(primary_key=True)
     phone_number = models.IntegerField(default=2547200000)
     location = models.CharField(max_length=256)
-    SECRET_KEY = models.IntegerField(primary_key=False)
+    description = models.TextField()
+    SECRET_KEY = models.CharField(primary_key=False, max_length=10)
     price = models.ForeignKey(Price, related_name='bore_holes', null=False, blank=False, on_delete="cascade")
 
 
