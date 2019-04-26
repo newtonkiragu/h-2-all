@@ -1,8 +1,39 @@
 {% extends 'forms/base.html' %}
 {% block content %}
-<form class="" action="/price" method="post">
-  {%csrf_token%}
-    <input type="text" name="" value="">
-    <button type="submit" name="button">submit</button>
-</form>
+<div class="col-md-12 panel">
+  <div class="col-md-12 panel-heading">
+    <h4>Form Validation</h4>
+  </div>
+  <div class="col-md-12 panel-body" style="padding-bottom:30px;">
+    <div class="col-md-12">
+      <form class="cmxform" id="signupForm" method="get" action="">
+        {%csrf_token%}
+        <div class="col-md-6">
+          <div class="form-group form-animate-text" style="margin-top:40px !important;">
+            <input type="text" class="form-text" id="validate_username" name="validate_username" required>
+            <span class="bar"></span>
+            <label>Username</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group form-animate-text" style="margin-top:40px !important;">
+            <input type="password" class="form-text" id="validate_password" name="validate_password" required>
+            <span class="bar"></span>
+            <label>Password</label>
+          </div>
+          <div class="form-group form-animate-text" style="margin-top:40px !important;">
+            <input type="text" class="form-text" id="validate_email" name="validate_email" required>
+            <span class="bar"></span>
+            <label>Email</label>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <input class="submit btn btn-danger" type="submit" value="Submit">
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -11,8 +11,12 @@ def home(request):
 def borehole(request):
     return render(request, 'borehole.html', locals())
 
-def create_fie(request):
-    pass
+def price_list(request):
+    prices = Price.objects.all()
+    data = {}
+    data['posts'] = prices
+    return render(request, 'price.html', data)
+
 def create_price(request):
     current_price = 0
     price = Price.objects.filter()
@@ -28,11 +32,6 @@ def create_price(request):
     else:
         form = NewPriceForm()
     return render(request, 'forms/new_price.html', {"form": form})
-
-
-def price(request):
-    price =  get_object_or_404(Price)
-    return render(request, 'templates/price.html')
 
 def borehole(request):
     SECRET_KEY = ''
