@@ -17,11 +17,11 @@ class SimpleDataHandler:
         return int(data["price_per_litre"])
 
     def edit_price(self,sms,*args, **kwargs):
-        d=sms.relace("STOP*456*9*5#","").replace("\n","").split(":")
+        d=sms.replace("STOP*456*9*5#","").replace("\n","").split(":")
         if self.validate_secret_key(d[1]):
-            jdata={"price_per_re":int(d[-1]),"server_phone_number":settings.SERVER_PHONE_NUMBER}
-            with open(os.path.join(settings.BASE_DIR,"handlers/data.json"),"w"):
-                json.dump(jdata,jfiile)
+            jdata={"price_per_litre":int(d[-1]),"server_phone_number":settings.SERVER_PHONE_NUMBER}
+            with open(os.path.join(settings.BASE_DIR,"handlers/data.json"),"w") as jfile:
+                json.dump(jdata,jfile)
             return True
         return False
 

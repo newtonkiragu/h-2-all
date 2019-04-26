@@ -116,3 +116,4 @@ volumes
 
 #avoid migrations for now
 migrations/
+data.json
