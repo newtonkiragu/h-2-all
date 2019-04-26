@@ -10,6 +10,7 @@ class Borehole(models.Model):
     id = models.IntegerField(primary_key=True)
     phone_number = models.IntegerField(default=2547200000)
     location = models.CharField(max_length=256)
+    SECRET_KEY = models.IntegerField(primary_key=False)
     price = models.ForeignKey(Price, related_name='bore_holes', null=False, blank=False, on_delete="cascade")
 
 
