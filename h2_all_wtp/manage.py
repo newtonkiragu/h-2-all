@@ -19,7 +19,7 @@ class SimpleManager:
         if self.validate_sms(sms):
             # ['AFRICASTKNG', '19/04/26', '02:18:35+12', 'New Message: Hello STOP*456*9*5#\n']
             sender,message=sms[0],sms[3]
-            if message.beginswith("edit-price"):
+            if message.startswith("edit-price"):
                 data_handler.edit_price(message)
 
 if __name__=="__main__":
