@@ -1,4 +1,5 @@
 from dateutil.parser import parse
+from frontend.models import Borehole, Stat
 from .AbstractComunication import AbstractCommunication
 import africastalking
 from re import search
@@ -24,7 +25,16 @@ def parse_store_message(text_data):
             'boreholeBalance': float(data['balance'].replace(',', '')),
             'time': transaction_time.isoformat()
         }
+        borehole = None
+        try:
+            borehole = Borehole.objects.get(phone_number=text_data['source'])
+        except Borehole.DoesNotExist:
+            print("Borehole With Phone Number {} not found".format(text_data['source']))
         print(full_data)
+        Stat.objects.create(
+            bore_hole=borehole,
+            data=full_data
+        )
     else:
         print("Unable to fetch data from text, %s" % text_data)
 
