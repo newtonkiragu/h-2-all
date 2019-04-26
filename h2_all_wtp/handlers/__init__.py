@@ -1,1 +1,2 @@
 from handlers.sim800l_handler import SIM800L
+from handlers.simple_data_handler import SimpleDataHandler
