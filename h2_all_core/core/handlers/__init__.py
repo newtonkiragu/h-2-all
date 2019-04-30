@@ -1,1 +1,1 @@
-from handlers.mongodb_handler import MongoDbStorageHandler
+from core.handlers.mongodb_handler import MongoDbStorageHandler

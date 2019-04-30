@@ -13,9 +13,6 @@ class Borehole(models.Model):
     SECRET_KEY = models.CharField(primary_key=False, max_length=10)
     price = models.ForeignKey(Price, related_name='bore_holes', null=False, blank=False, on_delete="cascade")
 
-
-
-
 class Stat(models.Model):
     bore_hole = models.ForeignKey(Borehole, related_name='stats', null=True, on_delete="cascade")
     data = JSONField()
