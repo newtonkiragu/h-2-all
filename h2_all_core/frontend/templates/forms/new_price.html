@@ -1,0 +1,34 @@
+{% extends 'forms/base.html' %}
+{% block content %}
+<div class="col-md-12 panel">
+  <div class="col-md-12 panel-heading">
+    <h4>New Price</h4>
+  </div>
+  <div class="col-md-12 panel-body" style="padding-bottom:30px;">
+    <div class="col-md-12">
+      <form class="cmxform" id="signupForm" method="POST" action="">
+        {%csrf_token%}
+        <div class="col-md-6">
+          <div class="form-group form-animate-text" style="margin-top:40px !important;">
+            <input type="number" class="form-text" id="_price" name="_price" required>
+            <span class="bar"></span>
+            <label>Price per Litre</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group form-animate-text" style="margin-top:40px !important;">
+            <input type="text" class="form-text" id="name" name="name" required>
+            <span class="bar"></span>
+            <label>Name</label>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <input class="submit btn btn-danger" type="submit" value="Submit">
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

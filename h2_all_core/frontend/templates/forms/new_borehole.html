@@ -1,0 +1,51 @@
+{% extends 'forms/base.html' %}
+{% block content %}
+<div class="col-md-12 panel">
+  <div class="col-md-12 panel-heading">
+    <h4>New Borehole</h4>
+  </div>
+  <div class="col-md-12 panel-body" style="padding-bottom:30px;">
+    <div class="col-md-12">
+      <form class="cmxform" id="signupForm" method="POST" action="">
+        {%csrf_token%}
+        <div class="col-md-6">
+          <div class="form-group form-animate-text" style="margin-top:40px !important;">
+            <input type="tel" class="form-text" name="phone_number" required>
+            <span class="bar"></span>
+            <label>Phone number</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group form-animate-text" style="margin-top:40px !important;">
+            <input type="text" class="form-text" id="name" name="name" required>
+            <span class="bar"></span>
+            <label>Name</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group form-animate-text" style="margin-top:40px !important;">
+            <input type="text" class="form-text" id="location" name="location" required>
+            <span class="bar"></span>
+            <label>Location</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group form-animate-text" style="margin-top:40px !important;">
+              <label style="position: static;" class="p10">Price:</label>
+              <select name="price" required>
+                  {% for price in prices %}
+                  <option value="{{ price.id }}">Ksh.{{ price.per_litre }} per litre ({{ price.name }})</option>
+                  {% endfor %}
+              </select>
+              <span class="bar"></span>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <input class="submit btn btn-danger" type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

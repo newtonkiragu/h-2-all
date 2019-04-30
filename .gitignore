@@ -106,7 +106,7 @@ venv.bak/
 
 #envfiles
 *.env
-virtual
+virtual/
 
 # docker volumes
 volumes
@@ -116,4 +116,7 @@ volumes
 
 #avoid migrations for now
 migrations/
+
+# editor files
+.idea/
 data.json

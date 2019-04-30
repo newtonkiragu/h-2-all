@@ -1,0 +1,48 @@
+version: "3"
+
+networks:
+  h2_all:
+    driver: bridge
+
+services:
+
+  core-mongo:
+    image: mongo
+    networks:
+        - h2_all
+    volumes:
+      - "./volumes/core-mongo:/data/db/"
+    ports:
+        - 45700:27017
+    env_file:
+      - ./h2_all_core/.env
+
+  core-db:
+    image: postgres:11.1-alpine
+    container_name: h2_all_postgres
+    env_file: 
+      - ./h2_all_core/.env
+    networks:
+      - h2_all
+    ports:
+      - 5430:5432
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+      
+  core:
+    container_name: "h2_all_core"
+    build:
+      context: .
+      dockerfile: .docker/core/Dockerfile
+    env_file: 
+      - ./h2_all_core/.env
+    networks:
+      - h2_all
+    ports:
+      - 8000:8000
+    volumes:
+      - ./h2_all_core:/opt/h2_all_core
+    command: bash start_h2_all_core.sh
+    depends_on:
+      -  core-db
+
