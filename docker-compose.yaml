@@ -19,7 +19,7 @@ services:
 
   core-db:
     image: postgres:11.1-alpine
-    container_name: h2_all-postgres
+    container_name: h2_all_postgres
     env_file: 
       - ./h2_all_core/.env
     networks:
@@ -41,7 +41,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./core:/opt/core
+      - ./h2_all_core:/opt/h2_all_core
     command: bash start_h2_all_core.sh
     depends_on:
       -  core-db
