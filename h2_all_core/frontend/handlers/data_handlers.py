@@ -25,10 +25,30 @@ class BoreHoleMongoHandler:
         if query==None:
             return self.mongo_handler.fetch_all(self.collection)
         else:
-            return self.mongo_handler.database[self.collection].find(q,self.collection)
+            return self.mongo_handler.database[self.collection].find(q)
 
     def edit_price(self,phone_number,price):
         q={"phone_number":phone_number}
         n={ "$set": { "price_per_litre":price }}
         self.mongo_handler.database[self.collection].update_one(q,n)
+
+    def create_new_borehole(self,bh):
+        mbh=self.borehole_schema()
+        mbh["phone_number"]=bh.phone_number
+        mbh["location"]=bh.location
+        mbh["secret_key"]=bh.SECRET_KEY
+        mbh["price_per_litre"]=bh.price.per_litre
+        for s in bh.stats.all():
+            mbh["stats"].append(s.data)
+        self.mongo_handler.database[self.collection].insert_one(mbh)
+
+    def add_statistics(self,phone_number,stats):
+        q={"phone_number":phone_number}
+        n={ "$set": { "stats":stats }}
+        self.mongo_handler.database[self.collection].update_one(q,n)
+
+
+
+    
+
 

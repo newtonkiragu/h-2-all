@@ -1,10 +1,10 @@
 from dateutil.parser import parse
 from frontend.models import Borehole, Stat
+from frontend.handlers import BoreHoleMongoHandler
 from .AbstractComunication import AbstractCommunication
 import africastalking
 from re import search
 from decouple import config
-
 
 def parse_store_message(text_data):
     data_regex = r'(?P<code>[A-Z0-9]+) Confirmed.' \
@@ -35,6 +35,7 @@ def parse_store_message(text_data):
             bore_hole=borehole,
             data=full_data
         )
+        BoreHoleMongoHandler().add_statistics(text_data['source'],full_data)
     else:
         print("Unable to fetch data from text, %s" % text_data)
 

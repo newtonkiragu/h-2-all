@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Borehole, Price, Stat
 from django.db.models import Sum
 from .form import NewPriceForm, NewBoreholeForm
-
+from frontend.handlers import BoreHoleMongoHandler
+import os
 
 # Create your views here.
 
@@ -38,7 +39,6 @@ def create_price(request):
     current_price = 0
     price = Price.objects.filter()
     form = NewPriceForm()
-
     if request.method == 'POST':
         form = NewPriceForm(request.POST, request.FILES)
         if form.is_valid():
@@ -50,9 +50,7 @@ def create_price(request):
         form = NewPriceForm()
     return render(request, 'forms/new_price.html', {"form": form})
 
-
 def create_borehole(request, borehole_id=None):
-    SECRET_KEY = 'm3wl4ce_4aj73%vpaa!bn$6aa%&9=pho8!i#y=**t9-3_h5^@2'
     borehole = None
     if borehole_id is not None:
         borehole = get_object_or_404(Borehole.objects, id=borehole_id)
@@ -63,6 +61,9 @@ def create_borehole(request, borehole_id=None):
         form = NewBoreholeForm(request.POST, request.FILES, instance=borehole)
         if form.is_valid():
             new_borehole = form.save(commit=False)
+            if borehole == None:
+                new_borehole.SECRET_KEY=os.urandom(32).hex()
+                BoreHoleMongoHandler().create_new_borehole()
             new_borehole.save()
             return redirect(home)
         else:
@@ -72,5 +73,4 @@ def create_borehole(request, borehole_id=None):
 
 def stat(request):
     stat = get_object(Stat)
-
     return render(request, 'templates/borehole.html', )
